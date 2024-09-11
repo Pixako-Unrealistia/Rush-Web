@@ -117,6 +117,7 @@ body.night-mode::before, body.night-mode::after {
 	font-size: 1.2em;
 	line-height: 1.6;
 	animation: fadeIn 2s ease-in-out;
+	text-align: center;
 }
 
 .links {
