@@ -171,6 +171,32 @@
 			form.scrollIntoView({ behavior: 'smooth' });
 		}
 
+		let currentSlide = 0;
+		const slides = document.querySelectorAll('.carousel-slide');
+		const totalSlides = slides.length;
+		let interval;
+
+		function showSlide(index) {
+			clearInterval(interval);
+			slides.forEach((slide, i) => {
+				slide.style.display = i === index ? 'block' : 'none';
+			});
+			interval = setInterval(nextSlide, 10000);
+		}
+
+		function nextSlide() {
+			currentSlide = (currentSlide + 1) % totalSlides;
+			showSlide(currentSlide);
+		}
+
+		function prevSlide() {
+			currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+			showSlide(currentSlide);
+		}
+
+		interval = setInterval(nextSlide, 10000);
+		showSlide(currentSlide);
+
 		let clickCount = 0;
 		const maxClicks = 3;
 		const aboutText = document.getElementById('about-text');
@@ -192,9 +218,8 @@
 			duck.classList.add('duck');
 			document.body.appendChild(duck);
 
-			// Set random animation duration and delay
 			const duration = Math.random() * 5 + 5; // Between 5 and 10 seconds
-			const delay = Math.random() * 5; // Between 0 and 5 seconds
+			const delay = Math.random() * 5;
 			duck.style.animationDuration = `${duration}s`;
 			duck.style.animationDelay = `${delay}s`;
 		}
