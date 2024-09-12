@@ -168,11 +168,14 @@
 		let currentSlide = 0;
 		const slides = document.querySelectorAll('.carousel-slide');
 		const totalSlides = slides.length;
+		let interval;
 
 		function showSlide(index) {
+			clearInterval(interval);
 			slides.forEach((slide, i) => {
 				slide.style.display = i === index ? 'block' : 'none';
 			});
+			interval = setInterval(nextSlide, 10000);
 		}
 
 		function nextSlide() {
@@ -185,8 +188,7 @@
 			showSlide(currentSlide);
 		}
 
-		setInterval(nextSlide, 10000);
-
+		interval = setInterval(nextSlide, 10000);
 		showSlide(currentSlide);
 
 		let clickCount = 0;
@@ -246,6 +248,8 @@
 		document.addEventListener("keydown", keyDownHandler, false);
 		document.addEventListener("keyup", keyUpHandler, false);
 
+		var ballColor = "#0095DD";
+
 		function keyDownHandler(e) {
 			if (e.key == "Right" || e.key == "ArrowRight") {
 				rightPressed = true;
@@ -265,7 +269,7 @@
 		function drawBall() {
 			ctx.beginPath();
 			ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
-			ctx.fillStyle = "#0095DD";
+			ctx.fillStyle = ballColor;
 			ctx.fill();
 			ctx.closePath();
 		}
@@ -298,6 +302,7 @@
 				if (x > paddleX && x < paddleX + paddleWidth) {
 					dy = -dy;
 					score++;
+					ballColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
 					if (score > highScore) {
 						highScore = score;
 						localStorage.setItem('highscore', highScore);
