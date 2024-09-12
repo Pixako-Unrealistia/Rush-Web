@@ -5,6 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Portfolio - Sorchong</title>
 	<link rel="stylesheet" href="../css/sorchong.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 <body>
 	<nav>
@@ -31,16 +33,20 @@
 				<button class="carousel-button left" onclick="prevSlide()">&#10094;</button>
 				<div class="carousel-slides">
 					<div class="carousel-slide">
-						<a href="https://example.com/project1"><img src="https://cdn.discordapp.com/attachments/819226396562948206/1283441459261079612/image.png?ex=66e30181&is=66e1b001&hm=bda7409b69b96c598ecb99c1dbae295c2d0a6b6ae43257dbe1b2bf64a79c832d&" alt="Supermeowmeow"></a>
+						<a href="https://example.com/SPMM"><img src="../resources/1.png" alt="Supermeowmeow"></a>
 						<p>Contributed greatly in this project, tea shop keeping game written in ARM assemebly to be run on raspberry pi</p>
 					</div>
 					<div class="carousel-slide">
-						<a href="https://example.com/project2"><img src="https://cdn.discordapp.com/attachments/819226396562948206/1283457013044613280/image.png?ex=66e30ffd&is=66e1be7d&hm=bc3169b4daf2f5e6a3166d7cfd02afe6191544dd86e5d63d0556ab0558303017&" alt="SmartMeter"></a>
+						<a href="https://example.com/SMH"><img src="../resources/2.png" alt="SmartMeter"></a>
 						<p>Full implementation and deployment of smart meter hub system, utilising microservice architecture. Express security, adaptability, reachability and recoverability.
 
 							The system is capable of remotely turning on off, collect and summarise sensorial readings.
 							
 							Featuring web bassd application for administrator and web application for client</p>
+					</div>
+					<div class="carousel-slide">
+						<a href="https://example.com/LMS"><img src="../resources/3.png" alt="SmartMeter"></a>
+						<p>This project is an electronic locker control system implemented in Python in both hardware and software that enables secure and convenient access to the lockers. The fully functional demonstration piece relies on facial recognition for user authentication, after which they would be granted access to their respective locker, additionally, the manager of said locker can view the inside of the locker remotely, the system runs regular checks on the locker. The entire system is designed to be scalable, modular, and user-friendly</p>
 					</div>
 					<div class="carousel-slide">
 						<p>Many more! Interested? Find out yourself!</p>
@@ -104,9 +110,9 @@
 		<section id="contact">
 			<h2>Contact</h2>
 			<ul>
-				<li><a href="https://github.com/Pixako-Unrealistia">GitHub</a></li>
-				<li><a href="https://www.linkedin.com/in/schongte/">LinkedIn</a></li>
-				<li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&themeRefresh=1">Instagram</a></li>
+				<li><a href="https://github.com/Pixako-Unrealistia"><i class="fab fa-github"></i> GitHub</a></li>
+				<li><a href="https://www.linkedin.com/in/schongte/"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+				<li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&themeRefresh=1"><i class="fab fa-instagram"></i> Instagram</a></li>
 			</ul>
 		</section>
 		<center><a onclick="gfg_Run()" class="button">Contact me</a></center>
@@ -165,32 +171,6 @@
 			form.scrollIntoView({ behavior: 'smooth' });
 		}
 
-		let currentSlide = 0;
-		const slides = document.querySelectorAll('.carousel-slide');
-		const totalSlides = slides.length;
-		let interval;
-
-		function showSlide(index) {
-			clearInterval(interval);
-			slides.forEach((slide, i) => {
-				slide.style.display = i === index ? 'block' : 'none';
-			});
-			interval = setInterval(nextSlide, 10000);
-		}
-
-		function nextSlide() {
-			currentSlide = (currentSlide + 1) % totalSlides;
-			showSlide(currentSlide);
-		}
-
-		function prevSlide() {
-			currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-			showSlide(currentSlide);
-		}
-
-		interval = setInterval(nextSlide, 10000);
-		showSlide(currentSlide);
-
 		let clickCount = 0;
 		const maxClicks = 3;
 		const aboutText = document.getElementById('about-text');
@@ -202,8 +182,22 @@
 				moreDetails.textContent = details[clickCount];
 				aboutText.appendChild(moreDetails);
 				clickCount++;
+			} else {
+				spawnDuck();
 			}
 		});
+
+		function spawnDuck() {
+			const duck = document.createElement('div');
+			duck.classList.add('duck');
+			document.body.appendChild(duck);
+
+			// Set random animation duration and delay
+			const duration = Math.random() * 5 + 5; // Between 5 and 10 seconds
+			const delay = Math.random() * 5; // Between 0 and 5 seconds
+			duck.style.animationDuration = `${duration}s`;
+			duck.style.animationDelay = `${delay}s`;
+		}
 
 		function showCategory(category) {
 			const categories = document.querySelectorAll('.skills-category');

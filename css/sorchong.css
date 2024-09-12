@@ -330,3 +330,36 @@ footer {
 	border-radius: 10px;
 	text-align: center;
 }
+
+.duck {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	background-image: url('https://media.4-paws.org/b/8/d/5/b8d5441fec6b84e9c3cba899549b84bb0f193fff/VIER%20PFOTEN_2019-07-18_013-2890x2000.jpg');
+	background-size: contain;
+	background-repeat: no-repeat;
+	animation: glides 5s linear infinite;
+}
+
+@keyframes glides {
+	0% {
+		left: 0;
+		top: 0;
+	}
+	25% {
+		left: 50%;
+		top: 25%;
+	}
+	50% {
+		left: 100%;
+		top: 50%;
+	}
+	75% {
+		left: 50%;
+		top: 75%;
+	}
+	100% {
+		left: 0;
+		top: 100%;
+	}
+}
